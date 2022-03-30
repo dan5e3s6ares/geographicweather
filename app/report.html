@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head lang="pt-br">
+    <meta charset="utf-8" />
+    <title>
+      Axis Agromonitoramento
+    </title>
+</head>
+<style>
+
+.wrapper {
+  position: relative;
+  top: 0;
+  height: 0;
+  
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -0px;
+  margin-left: -0px;
+}
+
+.col-md-12 {
+    position: relative;
+    flex: 100%;
+    max-width: 100%;
+}
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+  text-align: center;
+}
+
+.table-responsive {
+    position: relative;
+  display: flex;
+  width: 100%;
+  text-align: center;
+}
+
+
+.card-header {
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 0;
+  background-color: #fff;
+  border-bottom: 1px solid #eeeeee;
+}
+.card .card-header-success .card-icon,
+.card .card-header-success:not(.card-header-icon):not(.card-header-text),
+.card .card-header-success .card-icon,
+.card .card-header-success .card-text,
+.card .card-header-success:not(.card-header-icon):not(.card-header-text),
+.card.bg-success,
+.card.card-rotate.bg-success .front,
+.card.card-rotate.bg-success .back {
+  background: linear-gradient(60deg, #66bb6a, #43a047);
+}
+.card [class*="card-header-"] .card-title a,
+.card [class*="card-header-"] .card-title,
+.card [class*="card-header-"] .icon i,
+.card[class*="bg-"] .card-title a,
+.card[class*="bg-"] .card-title,
+.card[class*="bg-"] .icon i {
+  color: #fff;
+}
+.card .card-title {
+  margin-top: 0;
+  margin-bottom: 3px;
+}
+.card .card-header .card-title {
+  margin-bottom: 3px;
+}
+.card .card-header.card-header-icon .card-title,
+.card .card-header.card-header-text .card-title {
+  margin-top: 15px;
+  color: #3C4858;
+}
+.card [class*="card-header-"] .card-title+.card-category {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.card [class*="card-header-"] .card-title+.card-category a {
+  color: #fff;
+}
+
+.card [class*="card-header-"] .card-text .card-title {
+  color: #fff;
+  margin-top: 0;
+}
+
+.card [class*="card-header-"] .ct-chart .card-title {
+  color: #fff;
+}
+.card-stats .card-header .card-icon+.card-title,
+.card-stats .card-header .card-icon+.card-category {
+  padding-top: 10px;
+}
+.card-stats .card-header.card-header-icon .card-title,
+.card-stats .card-header.card-header-text .card-title,
+.card-stats .card-header.card-header-icon .card-category,
+.card-stats .card-header.card-header-text .card-category {
+  margin: 0;
+}
+.card-stats .card-body {
+  text-align: left;
+}
+.card-body {
+  flex: 1 1 auto;
+  padding: 1rem;
+  text-align: left;
+}
+
+.text-success {
+  color: #4caf50 !important;
+}
+
+body {
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-size: 10pt;
+}
+@media print {
+
+  @page {
+    margin: 0.2in;
+    size: A4;
+    break-before: always;
+    page-break-after: always;
+  }
+
+  html, body {
+        font-size: 12pt; /* changing to 10pt has no impact */
+    }
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #4caf50 ;
+  color: white;
+  text-align: center;
+}
+
+</style>
+{% block body %}
+
+<body class="">
+    <div class="wrapper ">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title "> Mapa Detalhamento de Umidade do Solo</h4>
+                    </div>
+                </div>
+                <br>
+            </div>
+            
+        </div>
+        <div class="row">
+            <img src='{{ imagem1 }}' style="max-width: 19.5cm; height: auto;">
+            <br><br>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-success">
+                      <h4 class="card-title "> Gráfico Clima | Tempo</h4>
+                  </div>
+              </div>
+              <br>
+          </div>
+      </div>
+      <div class="row">
+          <img src='{{ imagem2 }}' style="max-width: 19.5cm; height: auto;">
+          <br><br>
+      </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title "> Histórico de Safras</h4>
+                    </div>
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table">
+                        <thead class=" text-success">
+                            <th>
+                                Distância da Estação Met.
+                            </th>
+                            <th>
+                                Volume Total de Chuva
+                            </th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <td >
+                                {{ dados.distance }}
+                            </td>
+                            <td >
+                                {{ dados.volume }}
+                            </td>
+                            </tr>
+                        </tbody>
+                        </table>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<div class='footer'>
+  <p>Axis Agromonitoramento | (65)3052-2568 | <a href="mailto:atendimento@axisagro.com.br">atendimento@axisagro.com.br</a></p>
+</div> 
+{% endblock %}
+</html>

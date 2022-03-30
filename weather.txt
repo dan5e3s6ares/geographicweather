@@ -1,0 +1,48 @@
+DJANGO USER:
+	clima
+    Token 5a7110facd24bf38870591709bd65898506a1c08
+
+
+MONTAR IMAGEM DOCKER : 
+    docker build -t climatempo .
+
+
+AUTENTICAR NA AMAZON:
+	aws ecr get-login-password --region sa-east-1 | docker login --username AWS --password-stdin 898368869656.dkr.ecr.sa-east-1.amazonaws.com
+
+
+CRIAR REPOSITORIO: 
+	aws ecr create-repository --repository-name climatempo --image-scanning-configuration scanOnPush=true --image-tag-mutability MUTABLE
+
+{
+    "repository": {
+        "repositoryArn": "arn:aws:ecr:sa-east-1:898368869656:repository/climatempo",
+        "registryId": "898368869656",
+        "repositoryName": "climatempo",
+        "repositoryUri": "898368869656.dkr.ecr.sa-east-1.amazonaws.com/climatempo",
+        "createdAt": "2021-08-03T15:41:34-04:00",
+        "imageTagMutability": "MUTABLE",
+        "imageScanningConfiguration": {
+            "scanOnPush": true
+        },
+        "encryptionConfiguration": {
+            "encryptionType": "AES256"
+        }
+    }
+}
+
+
+CONFIRMAR REPOSITÓRIO EM:
+	https://sa-east-1.console.aws.amazon.com/ecr/repositories?region=sa-east-1
+
+
+COPIAR PARA AWS O REPOSITÓRIO:
+	docker tag  climatempo:latest 898368869656.dkr.ecr.sa-east-1.amazonaws.com/climatempo:latest
+	docker push 898368869656.dkr.ecr.sa-east-1.amazonaws.com/climatempo:latest
+	
+DADOS DE ENTRADA:
+	data = {'ponto': ponto.__geo_interface__ , 'url': 'http://173.249.32.208/paginas/', 
+        'token': '5a7110facd24bf38870591709bd65898506a1c08', 'cod': 'flerifbwet7864poigjfgdbçcr287456brtgfgh', 'relid' : relid}
+
+URL:
+    https://9zzn39dux4.execute-api.sa-east-1.amazonaws.com/climatempo
